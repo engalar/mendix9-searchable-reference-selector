@@ -294,3 +294,14 @@ $focus-outline: -webkit-focus-ring-color auto 1px;
 .srs-alert {
     width: 100%;
 }
+
+.Tooltip {
+  background-color: #444;
+  color: white;
+  font-size: 90%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(100vw - 10px);
+}

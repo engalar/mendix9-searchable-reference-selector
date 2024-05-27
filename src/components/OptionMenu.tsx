@@ -20,6 +20,7 @@ import {
 } from "typings/SearchableReferenceSelectorMxNineProps";
 import { IOption } from "typings/option";
 import classNames from "classnames";
+import { useFloating, useHover, useInteractions, FloatingPortal } from "@floating-ui/react";
 
 interface OptionMenuProps {
     id: string;
@@ -124,6 +125,33 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
         [props.focusedObjIndex, props.onSelect, props.onSelectMoreOptions, props.hasMoreOptions, props.isLoading]
     );
 
+    const [isOpen, setIsOpen] = useState(false);
+    const [it, setIt] = useState<number | undefined>(0);
+
+    const { refs, floatingStyles, context } = useFloating({
+        open: isOpen,
+        onOpenChange: setIsOpen
+    });
+
+    const hover = useHover(context, { delay: { open: 100, close: 200 } });
+
+    const { getFloatingProps } = useInteractions([hover]);
+    const handleMouseOver = (index: number): void => {
+        setIt(index);
+        setIsOpen(true);
+    };
+
+    const handleMouseOut = (): void => {
+        setIsOpen(false);
+        setIt(undefined);
+    };
+
+    const getReferencePropsByIndex = (index: number): any => ({
+        ref: it === index ? refs.setReference : undefined,
+        onMouseOver: () => handleMouseOver(index),
+        onMouseOut: handleMouseOut
+    });
+
     return (
         <div
             className={classNames(
@@ -156,12 +184,26 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
             >
                 {props.options.length > 0 && (
                     <Fragment>
+                        {isOpen && (
+                            <FloatingPortal>
+                                <div
+                                    className="Tooltip"
+                                    ref={refs.setFloating}
+                                    style={floatingStyles}
+                                    {...getFloatingProps()}
+                                >
+                                    {props.options[it!].content}
+                                </div>
+                            </FloatingPortal>
+                        )}
                         {props.options.map((option, index) => (
                             <li
+                                {...getReferencePropsByIndex(index)}
                                 id={`${props.id}-${index}`}
                                 key={index}
                                 ref={index === props.focusedObjIndex ? selectedObjRef : undefined}
                                 role="option"
+                                // title={option.content}
                                 aria-selected={option.isSelected ? "true" : "false"}
                                 aria-label={option.ariaLiveText}
                                 aria-disabled={!option.isSelectable}

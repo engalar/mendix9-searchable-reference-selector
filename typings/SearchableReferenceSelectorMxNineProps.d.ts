@@ -1,9 +1,9 @@
 /**
  * This file was generated from SearchableReferenceSelectorMxNine.xml
  * WARNING: All changes made to this file will be overwritten
- * @author Mendix UI Content Team
+ * @author Mendix Widgets Framework Team
  */
-import { ComponentType } from "react";
+import { ComponentType, ReactNode } from "react";
 import { ActionValue, DynamicValue, EditableValue, ListValue, ListActionValue, ListAttributeValue, ListExpressionValue, ListWidgetValue, ReferenceValue, ReferenceSetValue, WebIcon } from "mendix";
 import { Big } from "big.js";
 
@@ -116,7 +116,7 @@ export interface SearchableReferenceSelectorMxNinePreviewProps {
     selectionType: SelectionTypeEnum;
     reference: string;
     referenceSet: string;
-    selectableObjects: {} | { type: string } | null;
+    selectableObjects: {} | { caption: string } | { type: string } | null;
     selectableCondition: string;
     enumAttribute: string;
     enumFilterType: EnumFilterTypeEnum;
@@ -127,7 +127,7 @@ export interface SearchableReferenceSelectorMxNinePreviewProps {
     optionTextType: OptionTextTypeEnum;
     displayAttribute: string;
     optionExpression: string;
-    optionCustomContent: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
+    optionCustomContent: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
     isSearchable: boolean;
     filterMode: FilterModeEnum;
     filterDelay: number | null;
@@ -145,23 +145,23 @@ export interface SearchableReferenceSelectorMxNinePreviewProps {
     maxItems: string;
     allowLoadingSelect: boolean;
     maxMenuHeight: string;
-    dropdownIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
+    dropdownIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     isCompact: boolean;
     clearSearchOnSelect: boolean;
     referenceSetStyle: ReferenceSetStyleEnum;
     referenceSetValue: ReferenceSetValueEnum;
     badgeColor: BadgeColorEnum;
-    referenceSetValueContent: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
+    referenceSetValueContent: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
     maxReferenceDisplay: number | null;
     moreResultsText: string;
     noResultsText: string;
     loadingText: string;
     showSelectAll: boolean;
     selectAllIconTitle: string;
-    selectAllIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
+    selectAllIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     isClearable: boolean;
     clearIconTitle: string;
-    clearIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
+    clearIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     onChange: {} | null;
     onEnter: {} | null;
     onLeave: {} | null;

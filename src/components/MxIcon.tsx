@@ -1,7 +1,9 @@
 import { createElement, ReactElement, MouseEvent, KeyboardEvent, useCallback } from "react";
-import { Icon } from "mendix/components/web/Icon";
+import _Icon from "mendix/components/web/Icon";
 import classNames from "classnames";
 import { IMxIcon } from "../../typings/general";
+
+const Icon = _Icon.Icon;
 
 interface IconProps {
     id?: string;

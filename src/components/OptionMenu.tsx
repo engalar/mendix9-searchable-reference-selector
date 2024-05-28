@@ -12,7 +12,7 @@ import {
     KeyboardEvent
 } from "react";
 import Option from "./Option";
-import { focusModeEnum } from "typings/general";
+import { focusModeEnum } from "../../typings/general";
 import {
     OptionsStyleSetEnum,
     OptionsStyleSingleEnum,
@@ -133,12 +133,13 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
         onOpenChange: setIsOpen
     });
 
-    const hover = useHover(context, { delay: { open: 100, close: 200 } });
+    const hover = useHover(context, { delay: { open: 1000, close: 200 } });
 
-    const { getFloatingProps } = useInteractions([hover]);
-    const handleMouseOver = (index: number): void => {
+    const { getFloatingProps, getReferenceProps } = useInteractions([hover]);
+    const handleMouseOver = (e: any, index: number): void => {
+        refs.setReference(e.currentTarget);
         setIt(index);
-        setIsOpen(true);
+        // setIsOpen(true);
     };
 
     const handleMouseOut = (): void => {
@@ -147,8 +148,7 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
     };
 
     const getReferencePropsByIndex = (index: number): any => ({
-        ref: it === index ? refs.setReference : undefined,
-        onMouseOver: () => handleMouseOver(index),
+        onMouseOver: (e: any) => handleMouseOver(e, index),
         onMouseOut: handleMouseOut
     });
 
@@ -184,18 +184,6 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
             >
                 {props.options.length > 0 && (
                     <Fragment>
-                        {isOpen && (
-                            <FloatingPortal>
-                                <div
-                                    className="Tooltip"
-                                    ref={refs.setFloating}
-                                    style={floatingStyles}
-                                    {...getFloatingProps()}
-                                >
-                                    {props.options[it!].content}
-                                </div>
-                            </FloatingPortal>
-                        )}
                         {props.options.map((option, index) => (
                             <li
                                 {...getReferencePropsByIndex(index)}
@@ -207,6 +195,7 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
                                 aria-selected={option.isSelected ? "true" : "false"}
                                 aria-label={option.ariaLiveText}
                                 aria-disabled={!option.isSelectable}
+                                {...getReferenceProps()}
                             >
                                 <Option
                                     isFocused={index === props.focusedObjIndex}
@@ -253,6 +242,13 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
                     </Fragment>
                 )}
             </ul>
+            {isOpen && (
+                <FloatingPortal>
+                    <div className="Tooltip" ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
+                        {props.options[it!].content}
+                    </div>
+                </FloatingPortal>
+            )}
             {props.options.length === 0 && !props.isLoading && (
                 <span
                     id={`${props.id}-no-results-region`}

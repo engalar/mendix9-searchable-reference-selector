@@ -1,41 +1,39 @@
 {
-    "name": "searchablereferenceselectormxnine",
-    "widgetName": "SearchableReferenceSelectorMxNine",
-    "version": "5.3.1",
-    "description": "Mendix reference, reference set, and enumeration selector with a search bar and a clear button",
-    "copyright": "Benjamin Griggs",
-    "author": "Benjamin Griggs",
-    "engines": {
-        "node": ">=14"
-    },
-    "license": "MIT",
-    "config": {
-        "projectPath": "../tp01",
-        "mendixHost": "http://localhost:8080",
-        "developmentPort": 3000
-    },
-    "packagePath": "mendix",
-    "scripts": {
-        "vite": "vite",
-        "start": "pluggable-widgets-tools start:server",
-        "dev": "pluggable-widgets-tools start:web",
-        "build": "pluggable-widgets-tools build:web",
-        "lint": "pluggable-widgets-tools lint",
-        "lint:fix": "pluggable-widgets-tools lint:fix",
-        "prerelease": "npm run lint",
-        "release": "pluggable-widgets-tools release:web"
-    },
-    "devDependencies": {
-        "@engalar/vite-plugin-mendix": "^1.2.2",
-        "@mendix/pluggable-widgets-tools": "^9.13.0",
-        "@types/big.js": "^6.0.2",
-        "@types/react": "~17.0.2",
-        "@types/react-dom": "~17.0.2",
-        "vite": "^5.2.11"
-    },
-    "dependencies": {
-        "classnames": "^2.5.1",
-        "sass": "^1.64.1",
-        "@floating-ui/react": "0.26.16"
-    }
+  "name": "searchablereferenceselectormxnine",
+  "widgetName": "SearchableReferenceSelectorMxNine",
+  "version": "5.3.1",
+  "description": "Mendix reference, reference set, and enumeration selector with a search bar and a clear button",
+  "copyright": "Benjamin Griggs",
+  "author": "Benjamin Griggs",
+  "engines": {
+    "node": ">=14"
+  },
+  "license": "MIT",
+  "config": {
+    "projectPath": "D:/Users/eg/Desktop/tmp3",
+    "mendixHost": "http://localhost:8080",
+    "developmentPort": 3000
+  },
+  "packagePath": "mendix",
+  "scripts": {
+    "vite": "vite",
+    "start": "pluggable-widgets-tools start:server",
+    "dev": "pluggable-widgets-tools start:web",
+    "build": "pluggable-widgets-tools build:web",
+    "lint": "pluggable-widgets-tools lint",
+    "lint:fix": "pluggable-widgets-tools lint:fix",
+    "prerelease": "npm run lint",
+    "release": "pluggable-widgets-tools release:web"
+  },
+  "devDependencies": {
+    "@engalar/vite-plugin-mendix": "^1.2.2",
+    "@mendix/pluggable-widgets-tools": "^10.7.2",
+    "@types/big.js": "^6.0.2",
+    "vite": "^5.2.11"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "sass": "^1.64.1",
+    "@floating-ui/react": "0.26.16"
+  }
 }

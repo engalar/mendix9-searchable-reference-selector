@@ -603,7 +603,7 @@ export default function SearchableReferenceSelector(
                     onEnter={() => callMxAction(props.onEnter, true)}
                     showMenu={showMenu}
                     setShowMenu={setShowMenu}
-                    ariaRequired={props.ariaRequired.value === true}
+                    ariaRequired={!!props.ariaRequired.value}
                     ariaSelectedText={props.ariaSelectedText?.value as string}
                     ariaSearchText={props.ariaSearchText?.value as string}
                     ariaArrowKeyInstructions={props.ariaArrowKeyInstructions?.value as string}

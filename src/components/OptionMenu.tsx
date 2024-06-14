@@ -242,10 +242,10 @@ const OptionsMenu = (props: OptionMenuProps): ReactElement => {
                     </Fragment>
                 )}
             </ul>
-            {isOpen && (
+            {isOpen && it !== undefined && it < props.options.length && (
                 <FloatingPortal>
                     <div className="Tooltip" ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
-                        {props.options[it!].content}
+                        {props.options[it].content}
                     </div>
                 </FloatingPortal>
             )}
